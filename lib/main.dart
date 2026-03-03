@@ -1,19 +1,12 @@
+// main.dart
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'models/cart_model.dart';
 
-import 'views/my_cart.dart';
-import 'views/my_catalog.dart';
+import 'core/routes/app_router.dart';
+import 'injection.dart'; // Import file DI
 
-void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => CartModel(),
-      child: const MyApp(),
-    ),
-  );
-}
+void main() => runApp(buildApp());
 
+// Class MyApp harus diperbarui untuk menggunakan AppRouter
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -21,11 +14,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const MyCatalog(),
-        '/cart': (context) => const MyCart(),
-      },
+      initialRoute: AppRouter.catalog, // Menggunakan konstanta dari AppRouter
+      routes: AppRouter.routes, // Menggunakan map routes dari AppRouter
     );
   }
 }
