@@ -6,9 +6,9 @@ import 'models/counter_model.dart';
 void main() {
   runApp(
     ChangeNotifierProvider(
-      create: (context) => CounterModel(),
+      create: (context) => CartModel(),
       child: const MyApp(),
-    ), // ChangeNotifierProvider
+    ),
   );
 }
 
